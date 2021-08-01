@@ -1,0 +1,198 @@
+<template>
+  <div class="wrapper">
+    <div class="input-data">
+      <input
+        type="text"
+        name="textInput"
+        class="textInput"
+        required
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+      />
+      <label v-if="!!placeholder" class="input-label" for="textInput">
+        {{ placeholder }}
+        <span v-if="!!isRequiredText">{{ isRequiredText }}</span>
+      </label>
+      <div class="underline" :class="{ accent }"></div>
+      <!-- loading slider -->
+      <div v-if="loading" class="slider">
+        <div class="subline inc"></div>
+        <div class="subline dec"></div>
+      </div>
+      <!-- slider end -->
+    </div>
+    <div class="warning">
+      {{ warningText }}
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    accent: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: String
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    },
+    isRequiredText: {
+      type: String,
+      default: ''
+    },
+    rules: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
+  computed: {
+    warningText() {
+      for (let i in this.rules) {
+        if (this.rules[i] !== false) return this.rules[i]
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import 'assets/styles/variables';
+
+.wrapper {
+  text-align: right;
+  min-width: 10ch;
+  max-width: 50ch;
+  height: 3.4rem;
+  margin-top: 0.9rem;
+
+  .input-data {
+    background-color: $panelBackground;
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+
+    .textInput {
+      text-align: inherit;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid silver;
+      outline: none;
+      padding: 0.5rem 1rem;
+
+      &:focus ~ .input-label,
+      &:valid ~ .input-label {
+        transform: translate(0.5rem, -1.4rem);
+        opacity: 1;
+        font-size: 0.7rem;
+        background-color: $panelBackground;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      &:focus ~ .underline,
+      &:valid ~ .underline {
+        width: 100%;
+      }
+
+      &:hover .warning {
+        font-size: 5rem;
+      }
+    }
+
+    .input-label {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.3rem;
+      pointer-events: none;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+      padding: 0.2rem 0.5rem 0;
+      white-space: nowrap;
+      color: $fontColorDark;
+
+      > span {
+        color: $color-warning;
+        font-weight: bold;
+      }
+    }
+
+    .underline {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 2px;
+      width: 0;
+      background-color: $color-primary;
+      z-index: 10;
+      transition: inherit;
+
+      .accent {
+        background-color: $color-warning;
+      }
+    }
+  }
+
+  .warning {
+    margin-right: 1rem;
+    color: $color-warning;
+    font-size: 0.7rem;
+    opacity: 1;
+    background-color: inherit !important;
+  }
+}
+
+//  loading slider
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  overflow-x: hidden;
+  bottom: 0;
+  left: 0;
+
+  .subline {
+    position: absolute;
+    background: dodgerblue;
+    height: inherit;
+    z-index: 99;
+  }
+}
+.inc {
+  animation: increase 2s infinite;
+}
+.dec {
+  animation: decrease 2s 0.5s infinite;
+}
+
+@keyframes increase {
+  from {
+    right: -5%;
+    width: 5%;
+  }
+  to {
+    right: 130%;
+    width: 100%;
+  }
+}
+@keyframes decrease {
+  from {
+    right: -80%;
+    width: 80%;
+  }
+  to {
+    right: 110%;
+    width: 10%;
+  }
+}
+</style>

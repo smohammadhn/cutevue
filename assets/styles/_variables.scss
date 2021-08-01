@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'IRLight';
+  src: url('~assets/fonts/IRANSansWeb(FaNum)_Light.eot') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/IRANSansWeb(FaNum)_Light.woff')
+      format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('~assets/fonts/IRANSansWeb(FaNum)_Light.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+  font-family: 'IRMed';
+  src: url('~assets/fonts/IRANSansWeb(FaNum)_Medium.eot') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/IRANSansWeb(FaNum)_Medium.woff')
+      format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('~assets/fonts/IRANSansWeb(FaNum)_Medium.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+  font-family: 'IRBold';
+  src: url('~assets/fonts/IRANSansWeb(FaNum)_Bold.eot') format('eot'),
+    /* IE6–8 */ url('~assets/fonts/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('~assets/fonts/IRANSansWeb(FaNum)_Bold.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+$lightIR: 'IRLight';
+$medIR: 'IRMed';
+
+$back1: #1e1e2a;
+
+$btnGreen: #3fc67a;
+$textGreen1: #5dcca9;
+$textGreen2: #51ac94;
+
+$blueHeader: #253649;
+$blueBack: #1c2938;
+$blueBox: #253649;
+
+$background-image: linear-gradient(
+  to right top,
+  #282c30,
+  #26292d,
+  #23272b,
+  #212428,
+  #1f2226
+);
+$success: #57e766;
+$info: #60c2f3;
+$danger: #ff4444;
+$warning: #f37011;
+$message: #ad74f5;
+$alert: #e6bf32;
+
+$panelBack: #1d1d42;
+$panelActive: #26264e;
+$panelBox: #141432;
+$panelBoxObject: #1b1a43;
+$panelBlue: #524eed;
+$panelLightBlue: #8e8ec8;
+$panelGreen: #6fcf97;
+
+// Typography
+$fontColorLight: white;
+$fontColorDark: black;
+
+// Navigation drawer:
+$primaryNavDrawerWidth: 60px;
+$secondaryNavDrawerWidth: 220px;
+$Color-badge: #65ccb8;
+
+// color palette:
+$secondaryNavDrawerBackgroundColor: #26335b;
+$primaryNavDrawerBackgroundColor: #080a36;
+$panelBackground: #fff;
+$formsBackground:  #f7f7f7;
+$toolbarBackground: #b0acc2;
+$color-accent: #be4cc6;
+$color-warning: #e35e2a;
+$color-secondary: #36adae;
+$color-primary: #5754bd;
