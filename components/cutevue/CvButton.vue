@@ -76,7 +76,7 @@ export default {
     btn.style.width = this.stretch
       ? '100%'
       : btn.children[1].clientWidth + 10 + 'px'
-    btn.style.height = btn.children[1].clientHeight + 15 + 'px'
+    btn.style.height = btn.children[1].clientHeight + 20 + 'px'
   },
   methods: {
     /**
