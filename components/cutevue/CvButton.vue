@@ -7,7 +7,7 @@
       'cv-secondary': secondary,
       accent,
       stretch,
-      'cv-outline': outline,
+      'cv-outline': outline
     }"
     @click="blink"
   >
@@ -39,36 +39,36 @@ export default {
   props: {
     reverse: {
       type: Boolean,
-      default: false,
+      default: false
     },
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     background: {
       type: String,
-      default: '',
+      default: ''
     },
     primary: {
       type: Boolean,
-      default: false,
+      default: false
     },
     secondary: {
       type: Boolean,
-      default: false,
+      default: false
     },
     accent: {
       type: Boolean,
-      default: false,
+      default: false
     },
     stretch: {
       type: Boolean,
-      default: false,
+      default: false
     },
     outline: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   mounted() {
     // setting the initial width and height of the button
@@ -95,8 +95,8 @@ export default {
       }, 700)
       // Activating @click for the component
       this.$emit('click', e)
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -135,6 +135,7 @@ export default {
 
   &-content {
     display: flex;
+    flex-direction: row;
     align-items: center;
     white-space: nowrap;
     pointer-events: none;
