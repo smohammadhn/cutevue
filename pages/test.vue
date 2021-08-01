@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <cv-button v-for="i in 10" :key="i" :loading="test">
+    <cv-button v-for="i in 5" :key="i" :loading="test">
       ورود
       <template #icon>
         <svg

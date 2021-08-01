@@ -115,7 +115,7 @@ export default {
   justify-content: center;
   align-items: center;
   transition: 0.1s ease;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   &.cv-outline {
     border: 2px solid $fontColorLight;
