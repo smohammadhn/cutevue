@@ -20,7 +20,7 @@
       <div class="dot dot3"></div>
     </div>
 
-    <div v-else class="cv-btn-content" :class="{ reverse }">
+    <div v-show="!loading" class="cv-btn-content" :class="{ reverse }">
       <!-- button text -->
       <slot />
       <!-- line -->
@@ -71,12 +71,12 @@ export default {
     },
   },
   mounted() {
-    // setting the initial width of the button
+    // setting the initial width and height of the button
     const btn = this.$vnode.elm
     btn.style.width = this.stretch
       ? '100%'
-      : btn.children[1].clientWidth + 10 + 'px'
-    btn.style.height = btn.children[1].clientHeight + 20 + 'px'
+      : btn.children[1].clientWidth + 40 + 'px'
+    btn.style.height = btn.children[1].clientHeight + 15 + 'px'
   },
   methods: {
     /**
@@ -105,7 +105,6 @@ export default {
 
 .cv-btn {
   position: relative;
-  padding: 0.5rem 1.5rem;
   background: $color-primary;
   color: $fontColorLight;
   cursor: pointer;
@@ -132,15 +131,9 @@ export default {
   }
   &.stretch {
     width: 100%;
-    padding: 0.5rem 0.5rem;
   }
 
   &-content {
-    position: absolute;
-    height: 70%;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -152,7 +145,7 @@ export default {
 
     .vertical-line {
       width: 2px;
-      height: 100%;
+      height: 24px;
       background: $fontColorLight;
       border-radius: 2px;
       transition: all 0.3s ease-out;
