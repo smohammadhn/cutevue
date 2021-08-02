@@ -17,9 +17,7 @@
 </template>
 
 <script>
-import CvTooltip from './CvTooltip.vue'
 export default {
-  components: { CvTooltip },
   name: 'CvTextArea',
   props: {
     value: {

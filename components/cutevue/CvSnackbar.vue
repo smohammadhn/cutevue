@@ -1,8 +1,8 @@
 <template>
   <transition name="snack">
-    <div class="snackbar" v-if="show">
+    <div v-if="show" class="snackbar">
       <p>{{ message }}</p>
-      <cv-button @click="show = false" outline :background="color"
+      <cv-button outline :background="color" @click="show = false"
         >بستن</cv-button
       >
       <div class="snack-underline" :style="{ background: color }"></div>
@@ -19,7 +19,7 @@ export default {
       color: ''
     }
   },
-  created: function () {
+  created() {
     this.$store.watch(
       (state) => state.snackbar.snackMessage,
       () => {

@@ -70,6 +70,11 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      btnText: ''
+    }
+  },
   mounted() {
     // setting the initial width and height of the button
     const btn = this.$vnode.elm

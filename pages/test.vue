@@ -34,15 +34,13 @@
 </template>
 
 <script>
-import CvButton from '~/components/cutevue/CvButton.vue'
 export default {
   name: 'Test',
-  components: { CvButton },
   data() {
     return {
-      test: false,
+      test: false
     }
-  },
+  }
 }
 </script>
 

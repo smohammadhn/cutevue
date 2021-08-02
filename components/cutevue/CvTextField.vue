@@ -58,9 +58,10 @@ export default {
   },
   computed: {
     warningText() {
-      for (let i in this.rules) {
+      for (const i in this.rules) {
         if (this.rules[i] !== false) return this.rules[i]
       }
+      return ''
     }
   }
 }

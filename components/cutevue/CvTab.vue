@@ -19,9 +19,6 @@
 <script>
 export default {
   name: 'CvTab',
-  data() {
-    return {}
-  },
   props: {
     menuItems: {
       type: Array,
@@ -30,33 +27,12 @@ export default {
       }
     }
   },
-  methods: {
-    activateClick(e, target) {
-      let slider1 = this.$vnode.elm.children[0].children[0]
-      let li = e.srcElement
-      slider1.style.width = li.clientWidth + 'px'
-      slider1.style.left = li.offsetLeft + 'px'
-
-      // send the name of the component to be shown
-      this.$emit('updatecomponent', target)
-    },
-    activateHover(e) {
-      let slider2 = this.$vnode.elm.children[0].children[1]
-      let li = e.srcElement
-      slider2.style.width = li.clientWidth + 'px'
-      slider2.style.left = li.offsetLeft + 'px'
-      slider2.style.opacity = 1
-      slider2.classList.add('squeeze')
-    },
-    activateLeave() {
-      let slider2 = this.$vnode.elm.children[0].children[1]
-      slider2.style.opacity = 0
-      slider2.classList.remove('squeeze')
-    },
-    initialWidthCalculator() {
-      let slider1 = this.$vnode.elm.children[0].children[0]
-      slider1.style.width = this.initialTab.clientWidth + 'px'
-      slider1.style.left = this.initialTab.offsetLeft + 'px'
+  data() {
+    return {}
+  },
+  computed: {
+    initialTab() {
+      return this.$vnode.elm.children[0].children[2]
     }
   },
   mounted() {
@@ -65,9 +41,33 @@ export default {
       this.initialWidthCalculator()
     }, 500)
   },
-  computed: {
-    initialTab() {
-      return this.$vnode.elm.children[0].children[2]
+  methods: {
+    activateClick(e, target) {
+      const slider1 = this.$vnode.elm.children[0].children[0]
+      const li = e.srcElement
+      slider1.style.width = li.clientWidth + 'px'
+      slider1.style.left = li.offsetLeft + 'px'
+
+      // send the name of the component to be shown
+      this.$emit('updatecomponent', target)
+    },
+    activateHover(e) {
+      const slider2 = this.$vnode.elm.children[0].children[1]
+      const li = e.srcElement
+      slider2.style.width = li.clientWidth + 'px'
+      slider2.style.left = li.offsetLeft + 'px'
+      slider2.style.opacity = 1
+      slider2.classList.add('squeeze')
+    },
+    activateLeave() {
+      const slider2 = this.$vnode.elm.children[0].children[1]
+      slider2.style.opacity = 0
+      slider2.classList.remove('squeeze')
+    },
+    initialWidthCalculator() {
+      const slider1 = this.$vnode.elm.children[0].children[0]
+      slider1.style.width = this.initialTab.clientWidth + 'px'
+      slider1.style.left = this.initialTab.offsetLeft + 'px'
     }
   }
 }

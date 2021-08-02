@@ -9,12 +9,12 @@ export default {
   name: 'Index',
   data() {
     return {
-      test: false,
+      test: false
     }
   },
   created() {},
   updated() {},
-  methods: {},
+  methods: {}
 }
 </script>
 

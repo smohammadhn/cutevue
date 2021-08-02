@@ -4,7 +4,7 @@
       <div class="modal">
         <header class="modal-header">
           <slot name="header"> {{ title }} </slot>
-          <cv-icon-close @click="close" class="btn-close" />
+          <cv-icon-close class="btn-close" @click="close" />
         </header>
 
         <section class="modal-body">
@@ -22,11 +22,6 @@
 <script>
 export default {
   name: 'CvModal',
-  methods: {
-    close() {
-      this.$emit('close')
-    }
-  },
   props: {
     active: {
       type: Boolean,
@@ -35,6 +30,11 @@ export default {
     title: {
       type: String,
       default: 'عنوان مدال'
+    }
+  },
+  methods: {
+    close() {
+      this.$emit('close')
     }
   }
 }

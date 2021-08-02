@@ -26,13 +26,13 @@ export default {
     lines: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
-      default: [],
+      default: []
     },
     pos: {
       type: String,
-      default: 'top-right',
-    },
-  },
+      default: 'top-right'
+    }
+  }
 }
 </script>
 
@@ -95,7 +95,7 @@ export default {
     position: absolute;
     border: 2px solid #eee;
     color: #1d1d1d;
-    background-color: $panelBackground;
+    background-color: $vcard-color;
     overflow: hidden;
     border-radius: 50%;
     border-top-right-radius: 15px;

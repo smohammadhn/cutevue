@@ -2,25 +2,25 @@
   <div class="cv-pagination">
     <div class="row-count">
       <input
+        v-model.lazy.number="rowCount"
         type="number"
         name="rowCountInput"
         class="input"
         max="100"
         min="1"
         step="1"
-        v-model.lazy.number="rowCount"
       />
       <label for="rowCountInput">:تعداد سطر ها</label>
     </div>
     <div class="current-page">
       <input
+        v-model.lazy.number="pageNumber"
         type="number"
         name="currentPageInput"
         class="input"
         :max="Math.ceil(totalRows / rowCount)"
         min="1"
         step="1"
-        v-model.lazy.number="pageNumber"
       />
       <label for="currentPageInput">:صفحه</label>
     </div>
@@ -85,18 +85,25 @@
 
 <script>
 export default {
+  props: {
+    totalRows: {
+      type: Number,
+      default: 100
+    },
+    rowsPerPage: {
+      type: Number,
+      default: 10
+    },
+    leftover: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       pageNumber: 1,
       rowCount: 0
     }
-  },
-  created() {
-    this.rowCount = this.rowsPerPage
-  },
-  mounted() {
-    this.checkPreviousPageBtn()
-    this.checkNextPageBtn()
   },
   watch: {
     pageNumber() {
@@ -116,19 +123,12 @@ export default {
       this.checkNextPageBtn()
     }
   },
-  props: {
-    totalRows: {
-      type: Number,
-      default: 100
-    },
-    rowsPerPage: {
-      type: Number,
-      default: 10
-    },
-    leftover: {
-      type: Number,
-      default: 0
-    }
+  created() {
+    this.rowCount = this.rowsPerPage
+  },
+  mounted() {
+    this.checkPreviousPageBtn()
+    this.checkNextPageBtn()
   },
   methods: {
     updatePage() {
@@ -138,8 +138,8 @@ export default {
       })
     },
     checkPreviousPageBtn() {
-      let firstPageBtn = this.$vnode.elm.children[6]
-      let previousPageBtn = this.$vnode.elm.children[7]
+      const firstPageBtn = this.$vnode.elm.children[6]
+      const previousPageBtn = this.$vnode.elm.children[7]
       if (this.pageNumber === 1) {
         previousPageBtn.style.opacity = '0.5'
         previousPageBtn.style.pointerEvents = 'none'
@@ -153,9 +153,9 @@ export default {
       }
     },
     checkNextPageBtn() {
-      let previousPageBtn = this.$vnode.elm.children[3]
-      let lastPageBtn = this.$vnode.elm.children[4]
-      let maxPages = Math.ceil(this.totalRows / this.rowCount)
+      const previousPageBtn = this.$vnode.elm.children[3]
+      const lastPageBtn = this.$vnode.elm.children[4]
+      const maxPages = Math.ceil(this.totalRows / this.rowCount)
 
       if (this.pageNumber === maxPages) {
         previousPageBtn.style.opacity = '0.5'
