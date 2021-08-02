@@ -20,22 +20,17 @@ export default {
     }
   },
   created() {
-    this.$store.watch(
-      (state) => state.snackbar.snackMessage,
-      () => {
-        const msg = this.$store.state.snackbar.snackMessage
-        if (msg !== '') {
-          this.show = true
-          this.message = this.$store.state.snackbar.snackMessage
-          this.color = this.$store.state.snackbar.snackColor
-          this.$store.commit('snackbar/setSnack', { content: '', color: '' })
-
-          setTimeout(() => {
-            this.show = false
-          }, 4000)
-        }
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'snackbar/setSnack') {
+        this.show = false
+        this.message = state.snackbar.content
+        this.color = state.snackbar.color
+        this.show = true
+        setTimeout(() => {
+          this.show = false
+        }, 4000)
       }
-    )
+    })
   }
 }
 </script>

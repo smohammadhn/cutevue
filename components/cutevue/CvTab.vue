@@ -11,7 +11,7 @@
         @mouseout="activateLeave"
       >
         {{ menuItem.title }}
-      </li>
+      </li> 
     </ul>
   </div>
 </template>
