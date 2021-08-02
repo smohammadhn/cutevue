@@ -115,7 +115,10 @@ export default {
     }
   },
   mounted() {
-    this.hasOptions = !!this.$scopedSlots.hasOwnProperty('options')
+    this.hasOptions = !!Object.prototype.hasOwnProperty.call(
+      this.$scopedSlots,
+      'options'
+    )
     this.updateWidths()
   },
   updated() {
@@ -146,13 +149,14 @@ export default {
         value.split('.').forEach((element) => {
           result += `['${element}']`
         })
+        // eslint-disable-next-line no-eval
         return eval(result)
       }
     },
     updateWidths() {
       let widths = '60px'
       this.headers.forEach((e) => {
-        if (e.hasOwnProperty('width')) {
+        if (Object.prototype.hasOwnProperty.call(e, 'width')) {
           widths += ' ' + e.width
         } else {
           widths += ' 1fr'
