@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'Test',
+  name: 'TestButton',
   data() {
     return {
       test: false

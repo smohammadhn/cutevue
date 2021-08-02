@@ -95,7 +95,7 @@ export default {
     position: absolute;
     border: 2px solid #eee;
     color: #1d1d1d;
-    background-color: $vcard-color;
+    background-color: $panelBackground;
     overflow: hidden;
     border-radius: 50%;
     border-top-right-radius: 15px;
