@@ -179,13 +179,10 @@ export default {
 .cv-pagination {
   direction: ltr;
   display: flex;
-  flex-direction: row;
   border-top: 1px solid $color-primary;
-  // border-radius: 10px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0;
   margin: 0.5rem;
   gap: 0.5rem;
-  // width: 100%;
   justify-content: center;
 
   .first-page,

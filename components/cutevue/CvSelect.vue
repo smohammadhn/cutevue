@@ -89,6 +89,7 @@ export default {
       toggle.innerText = 'x'
     },
     onClear() {
+      this.$emit('input', {})
       this.selected = this.placeholder
       this.showWarning = true
       const toggle = this.$vnode.elm.children[0].children[0]
@@ -113,6 +114,7 @@ export default {
   min-width: 200px;
   color: $fontColorDark;
   font-size: 1rem;
+  margin-top: 0.9rem;
   height: 3.4rem;
 
   .main {
@@ -167,7 +169,7 @@ export default {
     left: 0;
     top: 100%;
     transition: all 0.3s ease;
-    z-index: 55;
+    z-index: 100;
     background: $panelBackground;
 
     .option {
@@ -194,6 +196,7 @@ export default {
   }
 
   .warning {
+    background-color: transparent !important;
     margin-right: 1rem;
     color: $color-warning;
     font-size: 0.7rem;

@@ -2,8 +2,8 @@
   <div class="cv-data-table" :class="{ border, shadow }">
     <!-- fixed header -->
     <div class="tr tr-header">
-      <div class="td td-numbers th">ردیف</div>
-      <div v-for="header in headers" :key="header.text" class="td th">
+      <div class="td-numbers th">ردیف</div>
+      <div v-for="header in headers" :key="header.text" class="th">
         {{ header.text }}
       </div>
       <div v-if="hasOptions" class="td td-options th">عملیات</div>
@@ -246,6 +246,8 @@ export default {
     background-color: #f6f9fc;
     font-size: 90%;
     border-radius: 10px 10px 0 0;
+    display: grid;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0 2px 1px 1px;
 
     &:hover {

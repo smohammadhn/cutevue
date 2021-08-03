@@ -1,7 +1,7 @@
 <template>
   <div class="center">
-    <!-- <cv-text-field v-model="test" placeholder="میزان" /> -->
-    <cv-money-text-field v-model="test" placeholder="میزان" />
+    <cv-text-field v-model="test" placeholder="میزان" />
+    <!-- <cv-money-text-field v-model="test" placeholder="میزان" /> -->
   </div>
 </template>
 

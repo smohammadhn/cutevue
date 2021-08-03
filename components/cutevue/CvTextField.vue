@@ -50,11 +50,10 @@ export default {
       default() {
         return []
       }
-    }
-  },
-  data() {
-    return {
-      value: null
+    },
+    // eslint-disable-next-line vue/require-default-prop
+    value: {
+      type: String
     }
   },
   computed: {
