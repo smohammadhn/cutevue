@@ -2,12 +2,11 @@
   <div class="wrapper">
     <div class="input-data">
       <input
-        :value="value"
+        v-model.trim="value"
         type="text"
         name="textInput"
         class="textInput"
         required
-        @input="$emit('input', $event.target.value)"
       />
       <label v-if="!!placeholder" class="input-label" for="textInput">
         {{ placeholder }}
@@ -54,7 +53,8 @@ export default {
   },
   data() {
     return {
-      value: null
+      value: null,
+      notValidText: ''
     }
   },
   computed: {
@@ -62,7 +62,19 @@ export default {
       for (const i in this.rules) {
         if (this.rules[i] !== false) return this.rules[i]
       }
-      return ''
+      return this.notValidText
+    }
+  },
+  watch: {
+    value() {
+      const rawValue = this.value.replace(/,/g, '')
+      this.value = rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      if (/^\d+$/.test(rawValue) | (rawValue === '')) {
+        this.$emit('input', Number(rawValue))
+        this.notValidText = ''
+      } else {
+        this.notValidText = 'Remove that letter you bitch!'
+      }
     }
   }
 }
@@ -70,6 +82,11 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+
+$panelBackground: #fff;
+$fontColorDark: #000;
+$color-warning: red;
+$color-primary: blue;
 
 * {
   box-sizing: border-box;
