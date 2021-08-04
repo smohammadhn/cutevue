@@ -11,6 +11,7 @@
 <script>
 export default {
   name: 'Index',
+  layout: 'nav',
   data() {
     return {
       test: false

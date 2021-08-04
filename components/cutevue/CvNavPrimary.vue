@@ -1,9 +1,9 @@
 <template>
   <div class="nav-drawer-container">
     <!-- Secondary Navigation Drawer -->
-    <secondary-nav-drawer :class="SecondaryNavClasses" :data="secondaryNavData">
+    <cv-nav-secondary :class="SecondaryNavClasses" :data="secondaryNavData">
       <span class="secondary-nav-icon" v-html="secondaryNavData.icon" />
-    </secondary-nav-drawer>
+    </cv-nav-secondary>
     <!-- Primary Navigation Drawer -->
     <div class="primary-nav-drawer">
       <!-- Navigation Toggler -->
@@ -66,6 +66,14 @@
 <script>
 export default {
   name: 'NavigationDrawer',
+  props: {
+    menuItems: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   data() {
     return {
       clipped: true,
@@ -82,6 +90,9 @@ export default {
         clipped: this.clipped
       }
     }
+  },
+  mounted() {
+    this.$refs.items[0].classList.add('selected')
   },
   methods: {
     clipSecondaryNavDrawer() {
@@ -122,17 +133,6 @@ export default {
           // ignore
         })
     }
-  },
-  mounted() {
-    this.$refs.items[0].classList.add('selected')
-  },
-  props: {
-    menuItems: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
   }
 }
 </script>
@@ -140,6 +140,22 @@ export default {
 <style lang="scss">
 @import 'assets/styles/variables';
 
+// reset browser defaults
+* {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+// custom styles
 .nav-drawer-container {
   display: flex;
   position: sticky;
@@ -147,6 +163,7 @@ export default {
   top: 0;
   height: 100vh;
   z-index: 1;
+  width: fit-content;
 }
 
 .primary-nav-drawer {

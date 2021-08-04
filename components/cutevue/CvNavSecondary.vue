@@ -36,7 +36,7 @@
           >
             <b />
             <b />
-            <coming-soon-badge v-if="subItem.comingSoon" />
+            <cv-badge v-if="subItem.comingSoon" />
             <span class="title">{{ subItem.title }}</span>
             <div v-if="!subItem.comingSoon" class="triangle" />
           </nuxt-link>
@@ -47,11 +47,8 @@
 </template>
 
 <script>
-import ComingSoonBadge from './ComingSoonBadge.vue'
-
 export default {
   name: 'SecondaryNavDrawer',
-  components: { ComingSoonBadge },
   props: {
     data: {
       type: Object,
