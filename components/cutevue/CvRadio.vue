@@ -1,6 +1,11 @@
 <template>
   <div class="cv-checkbox">
-    <input type="radio" :name="group" @change="$emit('input', selectedValue)" />
+    <input
+      type="radio"
+      :name="group"
+      @change="$emit('input', selectedValue)"
+      :checked="selected"
+    />
     <label><slot /></label>
   </div>
 </template>
@@ -26,15 +31,14 @@ export default {
       default: null
     }
   },
-  data() {
-    return {
-      checked: false
-    }
-  },
   mounted() {
     if (this.selected) {
-      this.checked = true
-      this.$emit('input', this.checked)
+      this.$emit('input', this.selectedValue)
+    }
+  },
+  watch: {
+    checked() {
+      console.log('this.checked :>> ', this.checked)
     }
   }
 }
@@ -43,14 +47,16 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
-* {
-  box-sizing: border-box;
+*,
+*::after,
+*::before {
+  box-sizing: content-box;
 }
 
 .cv-checkbox {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   font-size: 1rem;
   direction: ltr;
 }
@@ -75,7 +81,7 @@ input {
     transform: translate(-50%, -50%);
     position: absolute;
     transition: all 0.1s ease;
-    border-color: $color-warning;
+    border-color: $color-secondary;
     border-style: solid;
   }
 

@@ -84,7 +84,7 @@ input {
     transform: translate(-50%, -50%);
     position: absolute;
     transition: all 0.1s ease;
-    border-color: $color-warning;
+    border-color: $color-secondary;
     border-style: solid;
   }
 
@@ -95,7 +95,7 @@ input {
     border-width: 2px;
     border-style: solid;
     border-radius: 3px;
-    background-color: $color-primary;
+    background-color: $panelBackground;
   }
 
   // floater
@@ -113,7 +113,7 @@ input {
     width: 20px;
     height: 20px;
     border-radius: 20px;
-    background-color: $color-primary;
+    background-color: $panelBackground;
   }
 
   // tick

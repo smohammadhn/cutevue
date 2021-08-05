@@ -1,7 +1,9 @@
 <template>
   <div class="center">
-    <cv-text-field v-model="test" placeholder="میزان" />
-    <!-- <cv-money-text-field v-model="test" placeholder="میزان" /> -->
+    <cv-text-field v-model="val1" placeholder="نام خانوادگی" loading />
+    {{ val1 }}
+    <cv-money-text-field v-model="val2" placeholder="مقدار پول" />
+    {{ val2 }}
   </div>
 </template>
 
@@ -10,12 +12,8 @@ export default {
   name: 'TestSelect',
   data() {
     return {
-      test: null
-    }
-  },
-  watch: {
-    test() {
-      console.log('this.test :>> ', this.test)
+      val1: null,
+      val2: null
     }
   }
 }
