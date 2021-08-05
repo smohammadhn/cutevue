@@ -34,6 +34,10 @@ export default {
             subItem5: {
               title: 'Checkbox ',
               path: '/test-checkbox'
+            },
+            subItem6: {
+              title: 'RadioButton ',
+              path: '/test-radio'
             }
           }
         }
