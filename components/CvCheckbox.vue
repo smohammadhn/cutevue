@@ -59,6 +59,7 @@ export default {
   align-items: center;
   gap: 1rem;
   font-size: 1rem;
+  direction: ltr;
 }
 
 // hiding original input
@@ -67,8 +68,8 @@ input {
   cursor: pointer;
   width: 0px;
   height: 0px;
-  border-color: red;
 
+  // custom styles to :before and :after
   &:hover:before {
     border-width: 5px;
   }
