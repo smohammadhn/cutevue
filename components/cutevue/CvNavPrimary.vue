@@ -167,7 +167,8 @@ a {
 }
 
 .primary-nav-drawer {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: $primaryNavDrawerWidth;
   background-color: $primaryNavDrawerBackgroundColor;
@@ -178,8 +179,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    height: 90%;
-    margin: 20px 0;
+    flex-grow: 1;
+    margin-top: 20px;
     border-right: 5px solid $primaryNavDrawerBackgroundColor;
 
     li {
@@ -211,6 +212,7 @@ a {
 
       &:last-child {
         margin-top: auto;
+        margin-bottom: 1rem;
       }
 
       &.selected b {
