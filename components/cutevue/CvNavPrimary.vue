@@ -127,7 +127,7 @@ export default {
       this.$store
         .dispatch('user/logout')
         .then(() => {
-          this.$router.push('/')
+          this.$router.replace('/')
         })
         .catch((e) => {
           // ignore

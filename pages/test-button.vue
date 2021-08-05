@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <cv-button v-for="i in 5" :key="i" :loading="test">
+    <cv-button :loading="test">
       ورود
       <template #icon>
         <svg
@@ -16,7 +16,7 @@
       </template>
     </cv-button>
     <cv-button @click="test = !test">
-      ورود
+      click to toggle loading
       <template #icon>
         <svg
           xmlns="http://www.w3.org/2000/svg"
