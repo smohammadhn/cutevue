@@ -38,7 +38,12 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
+* {
+  box-sizing: border-box;
+}
+
 .snackbar {
+  direction: rtl;
   position: fixed;
   left: 50%;
   padding: 1rem;

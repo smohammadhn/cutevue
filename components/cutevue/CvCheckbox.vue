@@ -50,6 +50,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/styles/variables';
+
 * {
   box-sizing: border-box;
 }
@@ -82,7 +84,7 @@ input {
     transform: translate(-50%, -50%);
     position: absolute;
     transition: all 0.1s ease;
-    border-color: #ffcb9a;
+    border-color: $color-warning;
     border-style: solid;
   }
 
@@ -93,7 +95,7 @@ input {
     border-width: 2px;
     border-style: solid;
     border-radius: 3px;
-    background-color: #445768;
+    background-color: $color-primary;
   }
 
   // floater
@@ -111,7 +113,7 @@ input {
     width: 20px;
     height: 20px;
     border-radius: 20px;
-    background-color: #445768;
+    background-color: $color-primary;
   }
 
   // tick
