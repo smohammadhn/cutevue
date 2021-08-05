@@ -29,7 +29,7 @@
     <div class="tbody" :style="{ maxHeight: maxHeight }">
       <div
         v-for="(row, index) in rows"
-        :key="row.id"
+        :key="index"
         class="tr"
         @click="onRowClick(row)"
       >
@@ -55,6 +55,7 @@
         </div>
       </div>
     </div>
+    <!-- pagination section -->
     <cv-pagination
       v-if="totalRows > rowsPerPage"
       :total-rows="totalRows"
@@ -184,8 +185,9 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
   border-radius: 10px;
+  overflow-x: auto;
+  width: 100%;
 
   &.border {
     border: 1px solid $color-primary;
@@ -199,7 +201,6 @@ export default {
     padding: 0.5rem 0;
     display: grid;
     justify-content: space-between;
-    min-width: 768px;
     color: $fontColorDark;
 
     &:nth-child(even) {
@@ -249,6 +250,7 @@ export default {
     display: grid;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0 2px 1px 1px;
+    min-width: 768px;
 
     &:hover {
       transform: none;
@@ -267,6 +269,7 @@ export default {
 
   .tbody {
     overflow-y: auto;
+    min-width: 768px;
   }
 }
 
