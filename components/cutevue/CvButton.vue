@@ -19,7 +19,7 @@
       <div class="dot dot2"></div>
       <div class="dot dot3"></div>
     </div>
-
+    <!-- if not loading -->
     <div v-show="!loading" class="cv-btn-content" :class="{ reverse }">
       <!-- button text -->
       <slot />
@@ -76,7 +76,8 @@ export default {
     }
   },
   mounted() {
-    // setting the initial width and height of the button
+    /* setting the initial width and height of the button 
+    so that when it is loading, the shape of the button won't change */
     const btn = this.$vnode.elm
     btn.style.width = this.stretch
       ? '100%'
@@ -85,7 +86,7 @@ export default {
   },
   methods: {
     /**
-     * Activates the blink effect for 0.5 second
+     * Activates the blink effect for 0.7 second
      * @param {PointerEvent} e
      */
     blink(e) {
@@ -93,12 +94,13 @@ export default {
       const overlay = this.$vnode.elm.childNodes[0]
       overlay.style.left = `${e.offsetX}px`
       overlay.style.top = `${e.offsetY}px`
-      // enable overlay. Then, wait for 0.5sec and disable it
+      // enable overlay. Then, wait for 0.7sec and disable it
       overlay.classList.add('overlay')
       setTimeout(() => {
         overlay.classList.remove('overlay')
       }, 700)
-      // Activating @click for the component
+
+      // Activating @click event for the component
       this.$emit('click', e)
     }
   }
@@ -107,6 +109,10 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+
+* {
+  box-sizing: border-box;
+}
 
 .cv-btn {
   position: relative;
@@ -170,6 +176,7 @@ export default {
     }
   }
 }
+
 // ripple effect
 .overlay {
   position: absolute;
@@ -231,6 +238,7 @@ export default {
     transform: scale(0);
   }
 }
+
 // icon
 .icon-wrapper {
   fill: $fontColorLight;
