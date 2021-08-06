@@ -30,19 +30,26 @@ export default {
     }
   },
   mounted() {
+    /**
+     * If check prop is passed,
+     * activates the checkbox and updates its binded value (v-model)
+     */
     if (this.checked) {
       this.selected = true
       this.onSelect()
     }
   },
   methods: {
+    /**
+     * Updates the value of the component v-model everytime any changes occur
+     */
     onSelect() {
+      // make a copy
       const result = this.value
-      if (this.selected) {
-        result.push(this.checkedValue)
-      } else {
-        result.splice(result.indexOf(this.checkedValue), 1)
-      }
+      // if selected then remove the value from array, otherwise add it
+      if (this.selected) result.push(this.checkedValue)
+      else result.splice(result.indexOf(this.checkedValue), 1)
+      // send it for v-model
       this.$emit('input', result)
     }
   }
@@ -52,10 +59,12 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
+// resetting default styles
 * {
   box-sizing: border-box;
 }
 
+// wrapper
 .cv-checkbox {
   display: flex;
   align-items: center;
