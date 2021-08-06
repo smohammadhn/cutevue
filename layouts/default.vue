@@ -20,28 +20,32 @@ export default {
               path: '/test-button'
             },
             subItem2: {
-              title: 'DataTable ',
+              title: 'DataTable',
               path: '/test-dataTable'
             },
             subItem3: {
-              title: 'Select ',
+              title: 'Select',
               path: '/test-select'
             },
             subItem4: {
-              title: 'TextField ',
+              title: 'TextField',
               path: '/test-textField'
             },
             subItem5: {
-              title: 'Checkbox ',
+              title: 'Checkbox',
               path: '/test-checkbox'
             },
             subItem6: {
-              title: 'RadioButton ',
+              title: 'RadioButton',
               path: '/test-radio'
             },
             subItem7: {
-              title: 'Modal ',
+              title: 'Modal',
               path: '/test-modal'
+            },
+            subItem8: {
+              title: 'snackbar',
+              path: '/test-snackbar'
             }
           }
         }
