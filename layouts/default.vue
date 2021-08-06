@@ -38,6 +38,10 @@ export default {
             subItem6: {
               title: 'RadioButton ',
               path: '/test-radio'
+            },
+            subItem7: {
+              title: 'Modal ',
+              path: '/test-modal'
             }
           }
         }

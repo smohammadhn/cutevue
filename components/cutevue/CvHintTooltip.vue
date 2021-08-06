@@ -39,6 +39,10 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
+* {
+  box-sizing: border-box;
+}
+
 .cardHintWrapper {
   position: relative;
   white-space: nowrap;

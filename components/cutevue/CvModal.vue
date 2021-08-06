@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div v-if="active" class="modal-backdrop" @click.self="close">
+    <div v-if="value" class="modal-backdrop" @click.self="close">
       <div class="modal">
         <header class="modal-header">
           <slot name="header"> {{ title }} </slot>
@@ -30,11 +30,15 @@ export default {
     title: {
       type: String,
       default: 'عنوان مدال'
+    },
+    value: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     close() {
-      this.$emit('close')
+      this.$emit('input', false)
     }
   }
 }
@@ -57,11 +61,8 @@ export default {
 }
 
 .modal {
-  backdrop-filter: brightness(200%) blur(3px) opacity(1);
   background: $panelBackground;
-  border-left: 2px solid rgba($color: #fff, $alpha: 0.5);
-  border-radius: 15px;
-  border-top: 2px solid rgba($color: #fff, $alpha: 0.5);
+  border-radius: 10px;
   box-shadow: 20px 20px 50px rgba($color: #000000, $alpha: 0.5);
   display: flex;
   flex-direction: column;
