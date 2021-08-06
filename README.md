@@ -93,16 +93,18 @@ npm install --global yarn
 1. Fork the project
 
 2. Clone the repo:
+
    ```sh
    git clone https://github.com/YOUR_USERNAME/cutevue.git
    ```
+
 3. Open the folder in your text editor and then do:
 
-```sh
-  yarn install
-```
+   ```sh
+   yarn install
+   ```
 
-to install node_module packages and dependencies
+   to install node_module packages and dependencies
 
 4. Run the project:
    ```sh
@@ -131,7 +133,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-S.Mohammad Hosseininejad - smohammad hnd@gmail.com
+S.Mohammad Hosseininejad - smohammadhnd@gmail.com
 
 - Instagram: [@smohammdhn](https://www.instagram.com/smohammadhn/)
 - Telegram: [@smohammdhn](https://t.me/smohammdhn)
@@ -140,7 +142,7 @@ Project Link: [https://github.com/smohammadhn/cutevue](https://github.com/smoham
 
 ## Acknowledgements
 
-**Amazing people who helped me make this happen:**
+**_Amazing people who helped me make this happen:_**
 
 - [Saeid Hassani](https://github.com/realsaeedhassani)
 - [Alireza Beitari](https://github.com/AliRezaBeitari)
