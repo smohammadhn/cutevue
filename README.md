@@ -5,28 +5,27 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/smohammdhn/cutevue">
+    <h1 align="center">CUTEVUE</h1>
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">An intuitive UI framework</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    Plain HTML/CSS/Javascript made from scratch!
+    <br />  
+    <a href="https://github.com/smohammadhn/cutevue/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report a Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request a Feature</a>
   </p>
 </p>
 
@@ -48,7 +47,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -60,79 +58,66 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+There are many great UI frameworks available out there such as Vuetify, Bootstrap, Tailwind CSS, and etc. however, I didn't find one that really suit my needs so I created this one from scratch Because Why not 😄
 
-Here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Of course, no one framework will serve all projects' needs So I try adding more and more components in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people in advence who have contributed to expanding this framework!
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This project started being a raw Vue/Nuxt template, then, I started Creating some reusable components from scratch.
 
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
-- [Laravel](https://laravel.com)
+Every project has got some default dependencies right out of the box when you install a Nuxt application(i.e. Corejs, Linter, Prettier, etc.); other than that, NO EXTRA DEPENDENCY IS USED
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+- If you're here then you're most likely know how to perform following actions.
+- Make sure you got a text editor and a terminal, I recommend VS Code with the Vetur extension because of it being so lightweight.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Before you run the project make sure you got node installed on your machine
+[Here's the link](https://nodejs.org/en/download/)
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+now it's time to install YARN package manager(cause I like it more 😅 )
+
+```sh
+npm install --global yarn
+```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. Fork the project
 
-<!-- USAGE EXAMPLES -->
+2. Clone the repo:
+   ```sh
+   git clone https://github.com/YOUR_USERNAME/cutevue.git
+   ```
+3. Open the folder in your text editor and then do:
+
+```sh
+  yarn install
+```
+
+to install node_module packages and dependencies
+
+4. Run the project:
+   ```sh
+     yarn dev
+   ```
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+After running the project you can most likely visit projects first page at http://localhost:3000/ in your machine.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
+Navigate to all available tested components via the navDrawer in your right.
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -140,23 +125,22 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
-
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
-
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+S.Mohammad Hosseininejad - smohammad hnd@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+- Instagram: [@smohammdhn](https://www.instagram.com/smohammadhn/)
+- Telegram: [@smohammdhn](https://t.me/smohammdhn)
 
-<!-- ACKNOWLEDGEMENTS -->
+Project Link: [https://github.com/smohammadhn/cutevue](https://github.com/smohammadhn/cutevue)
 
 ## Acknowledgements
+
+**Amazing people who helped me make this happen:**
 
 - [Saeid Hassani](https://github.com/realsaeedhassani)
 - [Alireza Beitari](https://github.com/AliRezaBeitari)
