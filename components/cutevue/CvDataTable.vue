@@ -116,36 +116,73 @@ export default {
     }
   },
   mounted() {
+    // checks to see if user has passed anything to #options slot
     this.hasOptions = !!Object.prototype.hasOwnProperty.call(
       this.$scopedSlots,
       'options'
     )
+    // initial update for the header row before actual content arrives
     this.updateWidths()
   },
   updated() {
+    /**
+     * must be performed everytime any change happens to the table
+     * usually 3 times initially and 2 times per page change
+     */
     this.updateWidths()
   },
   methods: {
+    /**
+     * Activates marquee effect if overflow id detected
+     * @param {Mouseenter Event} e - event when mouse enters the cell
+     */
     checkMarquee(e) {
       if (e.srcElement.scrollWidth > e.srcElement.clientWidth) {
         e.srcElement.classList.add('marquee')
       }
     },
+
+    /**
+     * If marquee is activated, removes it
+     * @param {Mouseleave Event} e - event when mouse leaves a cell
+     */
     removeMarquee(e) {
       if (e.srcElement.classList.contains('marquee')) {
         e.srcElement.classList.remove('marquee')
       }
     },
+
+    /**
+     * Emits the value of all cells in the clicked row as an object
+     * @param {Object} rowValue - Data of one row
+     */
     onRowClick(rowValue) {
       this.$emit('click:row', rowValue)
     },
+
+    /**
+     * Emits the text value of a cell
+     * @param {Object} rowValue - Data of one row
+     * @param {headerValue} headerValue - the value of the corresponding header
+     */
     onCellClick(rowValue, headerValue) {
       this.$emit('click:cell', this.getObj(rowValue, headerValue))
     },
+
+    /**
+     * Finds the actual cell data in the object passed as 'rows' prop
+     * @param {Object} rowValue - Data of one row
+     * @param {String} headerValue - the value of the corresponding header
+     * @returns {String} the text value of the required cell
+     */
     getObj(row, value) {
+      // if it is not nested (e.g. row['name'])
       if (!value.includes('.')) {
         return row[value]
       } else {
+        /* if it is nested then we don't know how deep (row['info']['natural']['name']...['...'] 
+      so we need to create it based on the header.value taken from the user
+      */
         let result = 'row'
         value.split('.').forEach((element) => {
           result += `['${element}']`
@@ -154,8 +191,17 @@ export default {
         return eval(result)
       }
     },
+
+    /**
+     * Calculates the widths of all columns
+     * if the user specified the initial width using headers[*].width,
+     * it will set that as the width, otherwise 1fr will be used.
+     */
     updateWidths() {
+      // initializing width property, (60px is for numbers column)
       let widths = '60px'
+
+      // if user specified the width, add it. Otherwise, add 1fr
       this.headers.forEach((e) => {
         if (Object.prototype.hasOwnProperty.call(e, 'width')) {
           widths += ' ' + e.width
@@ -163,15 +209,14 @@ export default {
           widths += ' 1fr'
         }
       })
-      if (this.hasOptions) {
-        document.querySelectorAll('.tr').forEach((element) => {
-          element.style.gridTemplateColumns = widths + ' 100px'
-        })
-      } else {
-        document.querySelectorAll('.tr').forEach((element) => {
-          element.style.gridTemplateColumns = widths
-        })
-      }
+
+      // if user has passed #options prop add its column
+      if (this.hasOptions) widths += ' 100px'
+
+      // finally, set the widths
+      document.querySelectorAll('.tr').forEach((element) => {
+        element.style.gridTemplateColumns = widths
+      })
     }
   }
 }
@@ -179,6 +224,10 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+
+* {
+  box-sizing: border-box;
+}
 
 .cv-data-table {
   direction: rtl;
@@ -273,27 +322,6 @@ export default {
   }
 }
 
-.toggle-icon {
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  transition: 0.3s ease;
-
-  svg {
-    fill: $color-warning;
-    width: 24px;
-    height: 24px;
-  }
-
-  &.expanded {
-    transform: rotate(90deg);
-  }
-
-  svg {
-    pointer-events: none;
-  }
-}
-
 // loading dots
 .cv-data-table .loading {
   position: absolute;
@@ -352,8 +380,9 @@ export default {
     }
   }
 }
+
 // no-content
-.no-content {
+.cv-data-table .no-content {
   display: grid;
   place-items: center;
   padding: 2rem;
@@ -362,7 +391,8 @@ export default {
   font-weight: bold;
 }
 
-.marquee {
+// marquee
+.cv-data-table .marquee {
   animation: marqueeSlide 5s linear infinite;
   position: absolute;
 }
