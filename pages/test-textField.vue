@@ -1,9 +1,9 @@
 <template>
   <div class="center">
     <cv-text-field v-model="val1" placeholder="نام خانوادگی" loading />
-    {{ val1 }}
+    v-model binded value: {{ val1 }}
     <cv-money-text-field v-model="val2" placeholder="مقدار پول" />
-    {{ val2 }}
+    v-model binded value: {{ val2 }}
   </div>
 </template>
 

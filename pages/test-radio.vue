@@ -9,7 +9,7 @@
     <cv-radio v-model="selected" selected-value="unknown" group="gender"
       >نامشخص</cv-radio
     >
-    {{ selected }}
+    v-model binded value: {{ selected }}
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 .center {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   place-items: center;
   padding: 1rem;
   height: 100vh;

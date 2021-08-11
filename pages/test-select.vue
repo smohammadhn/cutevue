@@ -7,6 +7,7 @@
       label="name"
       required
     />
+    v-model binded value: {{ test }}
   </div>
 </template>
 
@@ -16,16 +17,13 @@ export default {
   data() {
     return {
       items: [
-        { name: 'محسن', id: 212 },
-        { name: 'محمد', id: 786 },
-        { name: 'سعید', id: 999 }
+        { name: 'محسن', id: 1 },
+        { name: 'محمد', id: 2 },
+        { name: 'سعید', id: 3 },
+        { name: 'سید', id: 4 },
+        { name: 'امین', id: 5 }
       ],
-      test: null
-    }
-  },
-  watch: {
-    test() {
-      console.log('this.test :>> ', this.test)
+      test: {}
     }
   }
 }
