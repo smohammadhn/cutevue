@@ -2,27 +2,30 @@
   <div class="select" :class="{ expanded }">
     <div class="main" @click.self="onClickMain">
       {{ selected }}
+      <!-- toggler -->
       <div class="toggle" @click="onClear">&#9650;</div>
-      <div class="underline" :class="{ expanded }"></div>
+      <!-- underline -->
+      <div class="underline" :class="{ expanded }" />
       <!-- loading slider -->
       <div v-if="loading" class="slider">
         <div class="subline inc"></div>
         <div class="subline dec"></div>
       </div>
-      <!-- slider end -->
+      <!-- options box -->
       <transition name="sbox">
-        <div v-show="expanded" class="box">
-          <div
+        <ul v-show="expanded" class="box">
+          <li
             v-for="(item, index) in items"
             :key="index"
             class="option"
             @click="onClickOption(item)"
           >
-            {{ getLabel(item) }}
-          </div>
-        </div>
+            {{ item[label] }}
+          </li>
+        </ul>
       </transition>
     </div>
+    <!-- warning text -->
     <div v-show="showWarning" class="warning">
       {{ warningText }}
     </div>
@@ -62,7 +65,7 @@ export default {
   },
   data() {
     return {
-      selected: '',
+      selected: {},
       expanded: false,
       showWarning: false
     }
@@ -71,31 +74,48 @@ export default {
     this.selected = this.placeholder
   },
   methods: {
-    getLabel(item) {
-      return item[this.label]
-    },
+    /**
+     * When clicked on the parent div:
+     * expands option box, toggles warning message
+     */
     onClickMain() {
       if (!this.loading) this.expanded = !this.expanded
-      if (this.required) this.showWarning = true
+      if (this.required && this.selected === {}) this.showWarning = true
     },
+
+    /**
+     * When clicked on each option:
+     * selects it, collapses option box, toggles clear btn, emits the result
+     * @param {Object} item - An option as an Object in this format {name: 'lorem', id: 1}
+     */
     onClickOption(item) {
-      this.$emit('input', item)
       this.selected = item[this.label]
       this.showWarning = false
       this.expanded = false
+
       const toggle = this.$vnode.elm.children[0].children[0]
       toggle.style.color = 'red'
       toggle.style.pointerEvents = 'auto'
       toggle.innerText = 'x'
+
+      this.$emit('input', item)
     },
+
+    /**
+     * When clicked on each option:
+     * Selects it, collapses option box, toggles clear btn, emits the result
+     * @param {Object} item - An option as an Object in this format {name: 'lorem', id: 1}
+     */
     onClear() {
-      this.$emit('input', {})
       this.selected = this.placeholder
       this.showWarning = true
+
       const toggle = this.$vnode.elm.children[0].children[0]
       toggle.style.color = 'blue'
       toggle.style.pointerEvents = 'none'
       toggle.innerText = '▲'
+
+      this.$emit('input', {})
     }
   }
 }
@@ -159,6 +179,7 @@ export default {
   }
 
   .box {
+    list-style-type: none;
     overflow: hidden;
     box-shadow: 0 0 2px rgba($color: #000000, $alpha: 0.1);
     border-radius: 10px;
