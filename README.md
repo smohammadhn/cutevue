@@ -1,11 +1,11 @@
 <!-- PROJECT SHIELDS -->
-
+\-------------------------
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
+\-------------------------
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -106,7 +106,17 @@ npm install --global yarn
 
    to install node_module packages and dependencies
 
-4. Run the project:
+4. Open nuxt.config.js and make sure to add all component directories:
+
+   ```
+     components: [
+    '~/components/',
+    '~/components/cutevue',
+    '~/components/cutevue/icons'
+    ]
+   ```
+   
+5. Run the project:
    ```sh
      yarn dev
    ```
