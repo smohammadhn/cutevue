@@ -1,5 +1,6 @@
 <template>
   <div class="cv-pagination">
+    <!-- item per page input -->
     <div class="row-count">
       <input
         v-model.lazy.number="rowCount"
@@ -12,6 +13,7 @@
       />
       <label for="rowCountInput">:تعداد سطر ها</label>
     </div>
+    <!-- select page input -->
     <div class="current-page">
       <input
         v-model.lazy.number="pageNumber"
@@ -24,7 +26,9 @@
       />
       <label for="currentPageInput">:صفحه</label>
     </div>
+    <!-- vertical line -->
     <span class="vertical-line" />
+    <!-- last page button -->
     <cv-tooltip top>
       <template #content>
         <div
@@ -40,6 +44,7 @@
       </template>
       صفحه ی آخر
     </cv-tooltip>
+    <!-- next page button -->
     <cv-tooltip top>
       <template #content>
         <div class="next-page" @click="pageNumber++">
@@ -52,10 +57,12 @@
       </template>
       صفحه ی بعد
     </cv-tooltip>
+    <!-- table information -->
     <p class="data">
       ردیف {{ (pageNumber - 1) * rowCount + 1 }} تا
       {{ (pageNumber - 1) * rowCount + leftover }} از {{ totalRows }}
     </p>
+    <!-- previous page button -->
     <cv-tooltip top>
       <template #content>
         <div class="previous-page" @click="pageNumber--">
@@ -68,6 +75,7 @@
       </template>
       صفحه ی قبل
     </cv-tooltip>
+    <!-- first page button -->
     <cv-tooltip top>
       <template #content>
         <div class="first-page" @click="pageNumber = 1">
@@ -131,12 +139,19 @@ export default {
     this.checkNextPageBtn()
   },
   methods: {
+    /**
+     * Sends the updated page information
+     */
     updatePage() {
       this.$emit('updatePage', {
         pageNumber: this.pageNumber,
         rowCount: this.rowCount
       })
     },
+
+    /**
+     * Disables previous and first button if page number is 1
+     */
     checkPreviousPageBtn() {
       const firstPageBtn = this.$vnode.elm.children[6]
       const previousPageBtn = this.$vnode.elm.children[7]
@@ -152,19 +167,23 @@ export default {
         firstPageBtn.style.pointerEvents = 'auto'
       }
     },
+
+    /**
+     * Disables next and last button if page number is max
+     */
     checkNextPageBtn() {
-      const previousPageBtn = this.$vnode.elm.children[3]
+      const nextPageBtn = this.$vnode.elm.children[3]
       const lastPageBtn = this.$vnode.elm.children[4]
       const maxPages = Math.ceil(this.totalRows / this.rowCount)
 
       if (this.pageNumber === maxPages) {
-        previousPageBtn.style.opacity = '0.5'
-        previousPageBtn.style.pointerEvents = 'none'
+        nextPageBtn.style.opacity = '0.5'
+        nextPageBtn.style.pointerEvents = 'none'
         lastPageBtn.style.opacity = '0.5'
         lastPageBtn.style.pointerEvents = 'none'
       } else {
-        previousPageBtn.style.opacity = '1'
-        previousPageBtn.style.pointerEvents = 'auto'
+        nextPageBtn.style.opacity = '1'
+        nextPageBtn.style.pointerEvents = 'auto'
         lastPageBtn.style.opacity = '1'
         lastPageBtn.style.pointerEvents = 'auto'
       }

@@ -3,8 +3,8 @@
     <input
       type="radio"
       :name="group"
-      @change="$emit('input', selectedValue)"
       :checked="selected"
+      @change="$emit('input', selectedValue)"
     />
     <label><slot /></label>
   </div>
@@ -35,11 +35,6 @@ export default {
     if (this.selected) {
       this.$emit('input', this.selectedValue)
     }
-  },
-  watch: {
-    checked() {
-      console.log('this.checked :>> ', this.checked)
-    }
   }
 }
 </script>
@@ -47,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
+// never change box-sizing: content-box
 *,
 *::after,
 *::before {
