@@ -50,6 +50,10 @@ export default {
             subItem9: {
               title: 'tooltip',
               path: '/test-tooltip'
+            },
+            subItem10: {
+              title: 'badge',
+              path: '/test-badge'
             }
           }
         }

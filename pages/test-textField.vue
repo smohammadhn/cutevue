@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'TestSelect',
+  name: 'TestTextField',
   data() {
     return {
       val1: null,

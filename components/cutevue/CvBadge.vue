@@ -1,13 +1,20 @@
 <template>
-  <span class="badge">{{ text }}</span>
+  <span class="badge" :class="{ small }" :style="{ background }">
+    <slot />
+  </span>
 </template>
 
 <script>
 export default {
+  name: 'CvBadge',
   props: {
-    text: {
+    small: {
+      type: Boolean,
+      default: false
+    },
+    background: {
       type: String,
-      default: 'به زودی'
+      default: '#e35e2a'
     }
   }
 }
@@ -16,15 +23,23 @@ export default {
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 
+* {
+  box-sizing: border-box;
+}
+
 .badge {
-  width: fit-content;
-  height: fit-content;
-  background: $color-warning;
-  padding: 0.3rem 0.7rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 50px;
   color: $fontColorLight;
-  font-size: 80%;
+  font-size: 0.8rem;
   display: grid;
   place-items: center;
+
+  &.small {
+    padding: 0;
+    min-width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
 }
 </style>

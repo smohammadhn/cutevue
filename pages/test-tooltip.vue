@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'TestButton',
+  name: 'TestTooltip',
   data() {
     return {
       selected: ''

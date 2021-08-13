@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'TestButton',
+  name: 'TestRadio',
   data() {
     return {
       selected: ''

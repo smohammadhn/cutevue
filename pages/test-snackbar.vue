@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'TestButton',
+  name: 'TestSnackbar',
   data() {
     return {}
   }
