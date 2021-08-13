@@ -7,10 +7,10 @@
       <path d="M11 11H13V17H11zM11 7H13V9H11z"></path>
     </svg>
     <div class="cardHint" :class="pos">
-      <div class="topSection">راهنما</div>
+      <div class="topSection">{{ title }}</div>
       <div class="body">
         <ul>
-          <li v-for="line in lines" :key="line">
+          <li v-for="line in content" :key="line">
             {{ line }}
           </li>
         </ul>
@@ -23,7 +23,7 @@
 export default {
   name: 'CardHint',
   props: {
-    lines: {
+    content: {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: []
@@ -31,6 +31,10 @@ export default {
     pos: {
       type: String,
       default: 'top-right'
+    },
+    title: {
+      type: String,
+      default: 'راهنما'
     }
   }
 }
@@ -44,6 +48,7 @@ export default {
 }
 
 .cardHintWrapper {
+  direction: rtl;
   position: relative;
   white-space: nowrap;
   z-index: 90;
@@ -64,7 +69,6 @@ export default {
     &:hover ~ .cardHint {
       padding: 1rem 1rem 0 1rem;
       border-radius: 15px;
-      border-top-right-radius: 15px;
       font-size: 100%;
       opacity: 1;
     }
@@ -111,12 +115,15 @@ export default {
       border-bottom: 2px solid #eee;
       padding-bottom: 0.5rem;
       padding-right: 1rem;
+      text-align: start;
     }
+
     .body {
       padding-right: 1rem;
+      text-align: start;
 
       ul {
-        list-style-type: none;
+        list-style-type: square;
 
         li {
           margin: 0.7rem 0;

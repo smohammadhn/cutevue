@@ -36,7 +36,7 @@
           >
             <b />
             <b />
-            <cv-badge v-if="subItem.comingSoon" />
+            <cv-badge v-if="subItem.comingSoon">به زودی</cv-badge>
             <span class="title">{{ subItem.title }}</span>
             <div v-if="!subItem.comingSoon" class="triangle" />
           </nuxt-link>
