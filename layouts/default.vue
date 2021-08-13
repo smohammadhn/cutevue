@@ -44,16 +44,24 @@ export default {
               path: '/test-modal'
             },
             subItem8: {
-              title: 'snackbar',
+              title: 'Snackbar',
               path: '/test-snackbar'
             },
             subItem9: {
-              title: 'tooltip',
+              title: 'Tooltip',
               path: '/test-tooltip'
             },
             subItem10: {
-              title: 'badge',
+              title: 'Badge',
               path: '/test-badge'
+            },
+            subItem11: {
+              title: 'HintTooltip',
+              path: '/test-hintTooltip'
+            },
+            subItem12: {
+              title: 'Tab',
+              path: '/test-tab'
             }
           }
         }
