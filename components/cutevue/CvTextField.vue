@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="input-data">
+      <!-- input -->
       <input
         :value="value"
         type="text"
@@ -9,10 +10,12 @@
         required
         @input="$emit('input', $event.target.value)"
       />
+      <!-- label -->
       <label v-if="!!placeholder" class="input-label" for="textInput">
         {{ placeholder }}
         <span v-if="!!isRequiredText">{{ isRequiredText }}</span>
       </label>
+      <!-- underline -->
       <div class="underline" :class="{ accent }"></div>
       <!-- loading slider -->
       <div v-if="loading" class="slider">
@@ -20,6 +23,7 @@
         <div class="subline dec"></div>
       </div>
     </div>
+    <!-- warning text -->
     <div class="warning">
       {{ warningText }}
     </div>
@@ -51,12 +55,16 @@ export default {
         return []
       }
     },
-    // eslint-disable-next-line vue/require-default-prop
     value: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   computed: {
+    /**
+     * Checks all the rules, to see if they are false (valid)
+     * @returns {String} the warning text of the rule (when not false)
+     */
     warningText() {
       for (const i in this.rules) {
         if (this.rules[i] !== false) return this.rules[i]

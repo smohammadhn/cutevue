@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="input-data">
+      <!-- input -->
       <input
         v-model.trim="value"
         type="text"
@@ -8,10 +9,12 @@
         class="textInput"
         required
       />
+      <!-- label -->
       <label v-if="!!placeholder" class="input-label" for="textInput">
         {{ placeholder }}
         <span v-if="!!isRequiredText">{{ isRequiredText }}</span>
       </label>
+      <!-- underline -->
       <div class="underline" :class="{ accent }"></div>
       <!-- loading slider -->
       <div v-if="loading" class="slider">
@@ -19,6 +22,7 @@
         <div class="subline dec"></div>
       </div>
     </div>
+    <!-- warning text -->
     <div class="warning">
       {{ warningText }}
     </div>
@@ -58,6 +62,10 @@ export default {
     }
   },
   computed: {
+    /**
+     * Checks all the rules, to see if they are false (valid)
+     * @returns {String} the warning text of the rule (when not false)
+     */
     warningText() {
       for (const i in this.rules) {
         if (this.rules[i] !== false) return this.rules[i]
@@ -66,9 +74,17 @@ export default {
     }
   },
   watch: {
+    /**
+     * Everytime the user inputs a value, removes all commas and then places them again
+     */
     value() {
+      // resets the input
       const rawValue = this.value.replace(/,/g, '')
+
+      // place commas
       this.value = rawValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+      // checks to see if there are any letters in the input
       if (/^\d+$/.test(rawValue) | (rawValue === '')) {
         this.$emit('input', Number(rawValue))
         this.notValidText = ''
