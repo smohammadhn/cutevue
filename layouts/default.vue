@@ -46,6 +46,10 @@ export default {
             subItem8: {
               title: 'snackbar',
               path: '/test-snackbar'
+            },
+            subItem9: {
+              title: 'tooltip',
+              path: '/test-tooltip'
             }
           }
         }

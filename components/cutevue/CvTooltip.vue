@@ -2,7 +2,7 @@
   <div class="cv-tooltip">
     <slot name="content"></slot>
     <span class="cv-tooltip-data" :class="{ top, bottom, left, right }">
-      <span><slot /></span>
+      <slot />
     </span>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  box-sizing: border-box;
+}
 .cv-tooltip {
   position: relative;
 
@@ -42,9 +45,9 @@ export default {
     position: absolute;
     opacity: 0;
     height: 0;
-    width: 0;
+    width: fit-content;
     background-color: white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
@@ -53,38 +56,34 @@ export default {
     overflow: hidden;
     color: #000;
     z-index: 101;
+    padding: 0 0.3rem;
 
-    span {
-      min-width: 122px;
-      text-align: center;
-    }
     &.top {
       transform: translate(-50%, 0);
-      top: -150%;
+      top: calc(-100% - 10px);
       left: 50%;
     }
     &.bottom {
       transform: translate(-50%, 0);
-      bottom: -150%;
+      bottom: calc(-100% - 10px);
       left: 50%;
     }
     &.left {
       transform: translate(0, -50%);
       top: 50%;
-      right: 150%;
+      right: calc(100% + 20px);
     }
     &.right {
       transform: translate(0, -50%);
       top: 50%;
-      left: 150%;
+      left: calc(100% + 20px);
     }
   }
 
   &:hover {
     .cv-tooltip-data {
       opacity: 1;
-      width: 122px;
-      height: 35px;
+      height: 2rem;
     }
   }
 }
