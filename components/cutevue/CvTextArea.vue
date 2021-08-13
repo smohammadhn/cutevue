@@ -9,10 +9,10 @@
       @input="$emit('input', $event.target.value)"
     />
     <div class="cv-text-area__underline"></div>
+    <!-- counter -->
     <div v-if="counter" class="cv-text-area__counter">{{ value.length }}</div>
-    <div class="cv-text-area__clear">
-      <cv-icon-close class="close" />
-    </div>
+    <!-- clear btn -->
+    <cv-icon-close class="cv-text-area__clear" @click="$emit('input', '')" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   name: 'CvTextArea',
   props: {
     value: {
-      type: String
+      type: String,
+      default: ''
     },
     rows: {
       type: Number,
@@ -49,6 +50,15 @@ export default {
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
 
 .cv-text-area {
   direction: rtl;
@@ -87,13 +97,15 @@ export default {
   }
 
   &__clear {
+    background: $color-primary;
     position: absolute;
     top: 5px;
     left: 5px;
     border-radius: 50%;
+    transition: 0.2s ease;
 
-    .close {
-      background: $color-primary;
+    &:hover {
+      transform: rotate(90deg);
     }
   }
 }

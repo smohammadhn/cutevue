@@ -62,6 +62,10 @@ export default {
             subItem12: {
               title: 'Tab',
               path: '/test-tab'
+            },
+            subItem13: {
+              title: 'TextArea',
+              path: '/test-Textarea'
             }
           }
         }
