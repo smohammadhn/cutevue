@@ -5,6 +5,7 @@
       :style="{ resize: resize, width: width }"
       :value="value"
       :maxlength="maxChars"
+      :placeholder="placeholder"
       class="cv-text-area__body"
       @input="$emit('input', $event.target.value)"
     />
@@ -43,6 +44,10 @@ export default {
     counter: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -64,9 +69,9 @@ textarea {
   direction: rtl;
   position: relative;
   background-color: $panelBackground;
-  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
-  width: fit-content;
-  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+  width: 100%;
+  border-radius: 5px 5px 0 0;
 
   &__body {
     display: block;

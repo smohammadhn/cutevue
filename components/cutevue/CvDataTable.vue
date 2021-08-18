@@ -2,6 +2,7 @@
   <div class="cv-data-table" :class="{ border, shadow }">
     <!-- fixed header -->
     <div class="tr tr-header">
+      <div v-if="rowsSelectable" class="th">انتخاب</div>
       <div class="td-numbers th">ردیف</div>
       <div v-for="header in headers" :key="header.text" class="th">
         {{ header.text }}
@@ -33,6 +34,14 @@
         class="tr"
         @click="onRowClick(row)"
       >
+        <!-- selection column -->
+        <div
+          v-if="rowsSelectable"
+          class="td"
+          @click="$emit('input', selectedRows)"
+        >
+          <cv-checkbox v-model="selectedRows" :checked-value="row" />
+        </div>
         <!-- numbers column -->
         <div class="td td-numbers">
           {{ (page - 1) * rowsPerPage + index + 1 }}
@@ -67,7 +76,9 @@
 </template>
 
 <script>
+import CvRadio from './CvRadio.vue'
 export default {
+  components: { CvRadio },
   props: {
     maxHeight: {
       type: String,
@@ -108,11 +119,16 @@ export default {
     shadow: {
       type: Boolean,
       default: false
+    },
+    rowsSelectable: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      hasOptions: false
+      hasOptions: false,
+      selectedRows: []
     }
   },
   mounted() {
@@ -199,7 +215,7 @@ export default {
      */
     updateWidths() {
       // initializing width property, (60px is for numbers column)
-      let widths = '60px'
+      let widths = this.rowsSelectable ? '50px 60px' : '60px'
 
       // if user specified the width, add it. Otherwise, add 1fr
       this.headers.forEach((e) => {

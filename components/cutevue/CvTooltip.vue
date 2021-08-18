@@ -38,6 +38,7 @@ export default {
 * {
   box-sizing: border-box;
 }
+
 .cv-tooltip {
   position: relative;
 
@@ -45,7 +46,8 @@ export default {
     position: absolute;
     opacity: 0;
     height: 0;
-    width: fit-content;
+    min-width: fit-content;
+    white-space: nowrap;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     transition: all 0.2s ease;
@@ -56,7 +58,7 @@ export default {
     overflow: hidden;
     color: #000;
     z-index: 101;
-    padding: 0 0.3rem;
+    padding: 0 1rem;
 
     &.top {
       transform: translate(-50%, 0);

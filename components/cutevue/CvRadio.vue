@@ -1,18 +1,18 @@
 <template>
-  <div class="cv-checkbox">
+  <div class="cv-radio">
     <input
       type="radio"
       :name="group"
       :checked="selected"
       @change="$emit('input', selectedValue)"
     />
-    <label><slot /></label>
+    <label v-if="label !== ''">{{ label }}</label>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CvCheckbox',
+  name: 'CvRadio',
   props: {
     value: {
       type: String,
@@ -29,6 +29,10 @@ export default {
     group: {
       type: String,
       default: null
+    },
+    label: {
+      type: String,
+      default: ''
     }
   },
   mounted() {
@@ -49,12 +53,13 @@ export default {
   box-sizing: content-box;
 }
 
-.cv-checkbox {
+.cv-radio {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   font-size: 1rem;
   direction: ltr;
+  height: 25px;
 }
 
 // hiding original input
@@ -66,7 +71,7 @@ input {
 
   // custom styles to :before and :after
   &:hover:before {
-    border-width: 5px;
+    border-width: 3.5px;
   }
 
   &:checked:before,
@@ -83,8 +88,8 @@ input {
 
   // square
   &:before {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     border-width: 2px;
     border-style: solid;
     border-radius: 3px;
@@ -102,18 +107,18 @@ input {
 
   // circle
   &:checked:before {
-    border-width: 4px;
-    width: 20px;
-    height: 20px;
+    border-width: 3.5px;
+    width: 17px;
+    height: 17px;
     border-radius: 20px;
     background-color: $panelBackground;
   }
 
   // tick
   &:checked:after {
-    border-width: 0 4px 4px 0;
-    width: 5px;
-    height: 10px;
+    border-width: 0 3.5px 3.5px 0;
+    width: 4px;
+    height: 9px;
     transform: rotate(45deg) translate(-100%, -20%);
     top: 0;
     left: 0;

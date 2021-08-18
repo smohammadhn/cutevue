@@ -128,6 +128,12 @@ export default {
   box-sizing: border-box;
 }
 
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
 .select {
   position: relative;
   direction: rtl;
@@ -140,7 +146,7 @@ export default {
   .main {
     border-radius: 5px;
     background-color: $panelBackground;
-    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.1);
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
     position: relative;
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -154,7 +160,7 @@ export default {
       display: grid;
       place-items: center;
       top: 50%;
-      left: 10%;
+      left: 25px;
       border-radius: 50%;
       pointer-events: none;
       cursor: pointer;
