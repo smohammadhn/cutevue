@@ -11,7 +11,7 @@
     />
     <div class="cv-text-area__underline"></div>
     <!-- counter -->
-    <div v-if="counter" class="cv-text-area__counter">{{ value && value.length ? value.length : 0 }}</div>
+    <div v-if="counter" class="cv-text-area__counter">{{ valueLength }}</div>
     <!-- clear btn -->
     <cv-icon-close class="cv-text-area__clear" @click="$emit('input', '')" />
   </div>
@@ -48,6 +48,12 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    valueLength() {
+      // If value is null return 0.
+      return this.value && this.value.length ? this.value.length : 0
     }
   }
 }
