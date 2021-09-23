@@ -11,7 +11,7 @@
     />
     <div class="cv-text-area__underline"></div>
     <!-- counter -->
-    <div v-if="counter" class="cv-text-area__counter">{{ value.length }}</div>
+    <div v-if="counter" class="cv-text-area__counter">{{ value && value.length ? value.length : 0 }}</div>
     <!-- clear btn -->
     <cv-icon-close class="cv-text-area__clear" @click="$emit('input', '')" />
   </div>
